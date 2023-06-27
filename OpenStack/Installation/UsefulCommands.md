@@ -1,0 +1,9 @@
+- ping
+- hostnamectl 
+- ip addr show: show all interfaces 
+- telnet
+- curl
+- mysql: check if user + password is correct with flags -u and -p
+- netstat
+- iptables
+- pvs: To display the LVM physical volume on a system, you can use either the pvs command 
