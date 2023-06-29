@@ -11,6 +11,12 @@
     Second interface (eth1) = 192.168.16.129
     Netmask = 255.255.255.0
 
+    Here is the configurations on my compute node: 
+    Hostname = ngoc-sto 
+    First interface (eth0) = 192.168.30.177 (this IP has been configured to access the Internet)
+    Second interface (eth1) = 192.168.16.86
+    Netmask = 255.255.255.0
+
     Python version = 3.8.10
 
 
@@ -23,20 +29,20 @@ security update, ...)
 ### Controller Node 
 #### Configure network interfaces 
 - Configure the first interface as the provider interface (in /etc/network/interfaces file)
-        auto eth0 -> this means interface eth0 should be configured during boot time, and the name is eth0
-        iface eth0 inet static -> this defines a static IP address for eth0 (as we have already known this IP, otherwise can set static to dhcp to receive an IP address)
-        address 192.168.30.39 -> this is the IP address we have known 
-        netmask 255.255.255.0 
-        gateway 192.168.30.1
-     </li>
-     <li> Configure the second interface as the management interface (in /etc/network/interfaces file)
-        auto eth1
-        iface eth1 inet static
-        address 192.168.16.161
-        netmask 255.255.255.0
-        gateway 192.168.16.1
-     </li>
-     <li> Reboot the system to activate the changes: sudo /etc/init.d/networking restart </li>
+    auto eth0 -> this means interface eth0 should be configured during boot time, and the name is eth0
+    iface eth0 inet static -> this defines a static IP address for eth0 (as we have already known this IP, otherwise can set static to dhcp to receive an IP address)
+    address 192.168.30.39 -> this is the IP address we have known 
+    netmask 255.255.255.0 
+    gateway 192.168.30.1
+
+- Configure the second interface as the management interface (in /etc/network/interfaces file)
+    auto eth1
+    iface eth1 inet static
+    address 192.168.16.161
+    netmask 255.255.255.0
+    gateway 192.168.16.1
+
+- Reboot the system to activate the changes: sudo /etc/init.d/networking restart </li>
 
 ``` 
     sudo /etc/init.d/networking restart
@@ -45,45 +51,46 @@ security update, ...)
 
 
 #### Configure name resolution 
-<ol>
-    <li> Set the hostname of the node to whatever you like (mine was set to ngoc-ctl) </li>
-    <li> Edit the /etc/hosts file to contain the following: </li>
 
-    ```
-       > # controller
-       > 192.168.30.39      ngoc-ctl
-       >
-       > # compute
-       > 192.168.30.143      ngoc-com
-    ```
+- Set the hostname of the node to whatever you like (mine was set to ngoc-ctl) 
+- Edit the /etc/hosts file to contain the following:
 
-</ol> 
+```
+    # controller
+    192.168.30.39      ngoc-ctl
+    
+    # compute
+    192.168.30.143      ngoc-com
+
+    # block storage 
+    192.168.30.177      ngoc-sto
+```
+
 
 
 ### Compute Node 
 #### Configure network interfaces 
-<ol>
-    <li> Configure the first interface as the provider interface (in /etc/network/interfaces file)
-        auto eth0 -> this means interface eth0 should be configured during boot time, and the name is eth0
-        iface eth0 inet static -> this defines a static IP address for eth0 (as we have already known this IP, otherwise can set static to dhcp to receive an IP address)
-        address 192.168.30.143 -> this is the IP address we have known 
-        netmask 255.255.255.0 
-        gateway 192.168.30.1
-    </li>
-    <li> Configure the second interface as the management interface (in /etc/network/interfaces file)
-        auto eth1
-        iface eth1 inet static
-        address 192.168.16.129
-        netmask 255.255.255.0
-        gateway 192.168.16.1
-    </li>
-    <li> Reboot the system to activate the changes: sudo /etc/init.d/networking restart </li>
 
-        ```console 
-            sudo /etc/init.d/networking restart
-        ```
-     
-</ol>
+- Configure the first interface as the provider interface (in /etc/network/interfaces file)
+    auto eth0 -> this means interface eth0 should be configured during boot time, and the name is eth0
+    iface eth0 inet static -> this defines a static IP address for eth0 (as we have already known this IP, otherwise can set static to dhcp to receive an IP address)
+    address 192.168.30.143 -> this is the IP address we have known 
+    netmask 255.255.255.0 
+    gateway 192.168.30.1
+
+- Configure the second interface as the management interface (in /etc/network/interfaces file)
+    auto eth1
+    iface eth1 inet static
+    address 192.168.16.129
+    netmask 255.255.255.0
+    gateway 192.168.16.1
+
+- Reboot the system to activate the changes: sudo /etc/init.d/networking restart 
+
+```console 
+    sudo /etc/init.d/networking restart
+```
+
 
 #### Configure name resolution 
 <ol>
@@ -91,13 +98,36 @@ security update, ...)
     <li> Edit the /etc/hosts file to contain the following: </li>
 
     ```
-       > # controller
-       > 192.168.30.39      ngoc-ctl
-       >
-       > # compute
-       > 192.168.30.143      ngoc-com
+       # controller
+       192.168.30.39      ngoc-ctl
+       
+       # compute
+       192.168.30.143      ngoc-com
+
+       # block storage 
+       192.168.30.177      ngoc-sto
     ```
 </ol> 
+
+### Block Storage Node 
+
+#### Configure name resolution 
+
+- Set the hostname of the node to whatever you like (mine was set to ngoc-sto) 
+- Edit the /etc/hosts file to contain the following:
+
+```
+    # controller
+    192.168.30.39      ngoc-ctl
+    
+    # compute
+    192.168.30.143      ngoc-com
+
+    # block storage 
+    192.168.30.177      ngoc-sto
+```
+
+- Reboot the system to activate the changes. 
 
 ### Verify connectivity 
 After the above steps, you need to verify network connectivity to the Internet and among the nodes: 
@@ -125,6 +155,7 @@ After the above steps, you need to verify network connectivity to the Internet a
 ``` 
     ping -c 4 ngoc-ctl 
 ```
+
 
 
 ## Network Time Protocol (NTP)
@@ -184,6 +215,27 @@ accurate servers and other nodes to reference the controller node. In this guide
 ```
 
 
+### Storage Node 
+#### Install and configure components 
+- Install the packages 
+
+``` 
+    apt install chrony 
+```
+
+- Configure the /etc/chrony/chrony.conf file and comment out or remove all server keys. Change it to reference the controller node by adding the following line.
+
+```
+    server ngoc-ctl iburst
+```
+
+- Restart the NTP service: 
+
+```console
+    service chrony restart  
+```
+
+
 ### Verify operation 
 - Run the below command on the controller node. Contents in the Name/IP address column should indicate the hostname or IP address of one or more NTP servers. Contents in the MS column should indicate * for the server to which the NTP service is currently synchronized.
 
@@ -191,7 +243,8 @@ accurate servers and other nodes to reference the controller node. In this guide
     chronyc sources
 ```
 
-- Run the same command on the compute note. Contents in the Name/IP address column should indicate the hostname of the controller node.
+- Run the same command on the compute and storage node. Contents in the Name/IP address column should indicate the hostname of the controller node.
+
 
 
 ## OpenStack packages for Ubuntu 

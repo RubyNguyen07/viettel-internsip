@@ -6,4 +6,8 @@
 - mysql: check if user + password is correct with flags -u and -p
 - netstat
 - iptables
+- pvcreate: prepare physical voumes for use with LVM 
+- vgcreate: builld a voume group
 - pvs: To display the LVM physical volume on a system, you can use either the pvs command 
+- lsblk: lsblk is a command-line utility used for listing block devices on a Linux system. Block devices consist of storage devices that hold data in the form of blocks, which are, typically, hard disk drives (HDDs) or solid-state drives (SSDs)
+(for example: /dev/sda1 is mounted on /, the "/" is the root directory of the system, which is where the OS is)

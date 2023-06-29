@@ -1,0 +1,6 @@
+- Refer to default ports: https://docs.openstack.org/juno/config-reference/content/firewalls-default-ports.html to check for port listening
+- Checking all services is enabled and active 
+- For troubleshooting Horizon, check /var/log/apache2 folders: access.log and error.log files
+- For troubleshooting volume attachment, check /var/log/nova: nova-compute.log
+- Check /var/log: syslog file
+- For troubleshooting attaching volumes, restart the following services: iscsi.servce, iscsi.socket, open-iscsi.service 
