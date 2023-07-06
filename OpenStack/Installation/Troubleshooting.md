@@ -4,3 +4,4 @@
 - For troubleshooting volume attachment, check /var/log/nova: nova-compute.log
 - Check /var/log: syslog file
 - For troubleshooting attaching volumes, restart the following services: iscsi.servce, iscsi.socket, open-iscsi.service 
+- If having problems with certification in Octavia: https://docs.openstack.org/octavia/latest/admin/guides/certificates.html

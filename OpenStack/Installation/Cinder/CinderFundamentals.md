@@ -119,8 +119,8 @@ To better understand how Cinder operates, let us take a look at one specific use
 
 
 ### Keywords 
-- LVM driver 
-- iSCSI transport
+- LVM: The Logical Volume Manager (LVM) is a Linux-based system that provides an abstraction layer on top of physical disks to expose logical volumes to the operating system. The LVM back-end implements block storage as LVM logical partitions. On each host that will house block storage, an administrator must initially create a volume group dedicated to Block Storage volumes. Blocks are created from LVM logical volumes.
+- iSCSI: Internet Small Computer Systems Interface (iSCSI) is a network protocol that operates on top of the Transport Control Protocol (TCP) for linking data storage devices. It transports data between an iSCSI initiator on a server and iSCSI target on a storage device.
 - SCSI ("scuzzy"): SCSI is a once-popular type of connection for storage and other devices in a PC. The term refers to the cables and ports used to connect certain types of hard drives, optical drives, scanners, and other peripheral devices to a computer.
 - RAID (redundant array of independent disks): a type of storage that writes data across multiple drives within the same system. 
 - SCSI bus: the interface is to provide host computer systems with connections to a variety of peripheral devices, including disk subsystems, tape subsystems, printers, scanners, optical devices, communication devices, and libraries.

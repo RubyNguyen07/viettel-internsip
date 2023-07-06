@@ -11,7 +11,7 @@
     Second interface (eth1) = 192.168.16.129
     Netmask = 255.255.255.0
 
-    Here is the configurations on my compute node: 
+    Here is the configurations on my storage node: 
     Hostname = ngoc-sto 
     First interface (eth0) = 192.168.30.177 (this IP has been configured to access the Internet)
     Second interface (eth1) = 192.168.16.86

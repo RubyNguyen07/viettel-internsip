@@ -11,3 +11,8 @@
 - pvs: To display the LVM physical volume on a system, you can use either the pvs command 
 - lsblk: lsblk is a command-line utility used for listing block devices on a Linux system. Block devices consist of storage devices that hold data in the form of blocks, which are, typically, hard disk drives (HDDs) or solid-state drives (SSDs)
 (for example: /dev/sda1 is mounted on /, the "/" is the root directory of the system, which is where the OS is)
+- ip r 
+- ifdown: Unlike ifup command the user can use ifdown command to bring network interface down, not allowing the user to transmit and receive data. Technically it places the network interface in a state where it cannot transmit or receive data. It is used to configure network interfaces based on interface definitions in the file /etc/network/interfaces.
+- ll: specifies all the files and directories and some important information such as permissions, date, size, time, and the number of links (without having to cd into the directory). 
+- dhclient -v eth0: get an IP address for the eth0 interface
+- If an instance launched does not have ip address when typing "ip a", use "sudo ifup eth0"

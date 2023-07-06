@@ -229,6 +229,9 @@ From nova-scheduler -> nova-conductor -> write to database updating states.
 [Diagram 1](https://github.com/thanh474/internship-2020/blob/master/ThanhBC/Openstack/Nova/novaimg/nova-cre-ins1.png)
 [Diagram 2](https://github.com/thanh474/internship-2020/blob/master/ThanhBC/Openstack/Nova/novaimg/nova-cre-ins2.png)
 
+! Note: 
+- When launching an instance not as an admin, you can not force or choose host to launch instances on. 
+
 ### Useful links
 Command-line utilities
 https://docs.openstack.org/api-ref/placement/ 

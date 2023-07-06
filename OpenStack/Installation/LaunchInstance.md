@@ -36,3 +36,4 @@ You can resize or rebuild an instance. You can also choose to view the instance 
 ## Resources 
 https://docs.openstack.org/horizon/latest/user/launch-instances.html
 https://help.dreamhost.com/hc/en-us/articles/217701757-What-s-the-difference-between-ephemeral-and-volume-boot-disks-
+https://docs.openstack.org/nova/latest/user/launch-instance-from-volume.html

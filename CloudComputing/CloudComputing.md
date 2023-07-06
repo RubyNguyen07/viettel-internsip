@@ -37,6 +37,16 @@ Cloud computing is the on-demand delivery of computing resources over the intern
 
 Virtualization technology makes cloud computing possible. Cloud providers set up and maintain their own data centers. They create different virtual environments that use the underlying hardware resources. You can then program your system to access these cloud resources by using APIs. Your infrastructure needs can be met as a fully managed service.
 
+## OpenStack 
+
+OpenStack is a massively scalable open-source project that provides an infrastructure platform to build cloud-aware applications and manage both private and public clouds.
+
+## VMware 
+
+VMware is a multi-cloud services provider that has a bunch of product portfolios including desktop and server software, cloud management platform, networking, and security products.
+
+The vCloud Suite from VMware, which unifies internal enterprise IT infrastructures virtualized on VMware with cloud resources deployed at VMware-managed data centers, might be said to be OpenStack's most logical competitor.
+
 
 ## Resources
 https://aws.amazon.com/what-is/virtualization/
