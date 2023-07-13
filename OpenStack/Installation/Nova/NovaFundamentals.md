@@ -231,6 +231,25 @@ From nova-scheduler -> nova-conductor -> write to database updating states.
 
 ! Note: 
 - When launching an instance not as an admin, you can not force or choose host to launch instances on. 
+- Specify Host as Scheduler Hint: Add a scheduler hint with the key force_host and set its value to the name of the specific host where you want to launch the instance.
+Example: Key: force_host, Value: my-target-host
+
+#### How this instance communicates with an external host 
+
+- The instance generates a packet and places it on the virtual Network Interface Card (NIC) inside the instance, such as eth0.
+
+- The packet transfers to the virtual NIC of the compute host, such as, vnet1. You can find out what vnet NIC is being used by looking at the /etc/libvirt/qemu/instance-xxxxxxxx.xml file.
+
+- From the vnet NIC, the packet transfers to a bridge on the compute node, such as br100.
+
+- If you run FlatDHCPManager, one bridge is on the compute node. If you run VlanManager, one bridge exists for each VLAN.
+
+- The packet transfers to the main NIC of the compute node. You can also see this NIC in the brctl output, or you can find it by referencing the flat_interface option in nova.conf.
+
+- After the packet is on this NIC, it transfers to the compute node’s default gateway. The packet is now most likely out of your control at this point. The diagram depicts an external gateway. However, in the default configuration with multi-host, the compute host is the gateway.
+
+- Reverse the direction to see the path of a ping reply. From this path, you can see that a single packet travels across four different NICs. If a problem occurs with any of these NICs, a network issue occurs.
+
 
 ### Useful links
 Command-line utilities
@@ -257,6 +276,9 @@ QEMU vs KVM hypervisor: KVM Kernel-based Virtual Machine) is the type 1 hypervis
 noVNC-based VNC console: VNC is a graphical console with wide support among many hypervisors and clients. noVNC provides VNC support through a web browser.
 
 cloud-init script: cloud-init is a software package that automates the initialization of cloud instances during system boot. You can configure cloud-init to perform a variety of tasks. 
+
+virsh: The virsh program is the main interface for managing virsh guest domains. The program can be used to create, pause, and shutdown domains. It can also be used to list current domains. Libvirt is a C toolkit to interact with the virtualization capabilities of recent versions of Linux (and other OSes). It is free software available under the GNU Lesser General Public License. Virtualization of the Linux Operating System means the ability to run multiple instances of Operating Systems concurrently on a single hardware system where the basic resources are driven by a Linux instance. The library aims at providing a long term stable C API . It currently supports Xen, QEmu, KVM , LXC , OpenVZ, VirtualBox and VMware ESX .
+
 
 ### References
 (https://docs.openstack.org/nova/victoria/install/overview.html)[https://docs.openstack.org/nova/victoria/install/overview.html] 
