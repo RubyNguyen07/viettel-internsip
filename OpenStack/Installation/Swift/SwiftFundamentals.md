@@ -55,6 +55,19 @@ The actual data associated with the container, which includes the objects stored
 
 In summary, containers are logical constructs within the Swift cluster, while the data associated with the container is distributed across multiple storage nodes in the cluster. This distributed architecture enables Swift to achieve scalability, fault tolerance, and efficient data management.
 
+#### Purpose and use 
+
+- Organization and Hierarchical Structure: Containers provide a way to organize objects hierarchically, similar to directories or folders in a traditional file system. Objects within a container can be logically grouped based on their purpose, content type, project, user, or any other relevant criteria. Containers can have sub-containers, allowing for the creation of a hierarchical structure to organize objects in a more granular manner.
+
+- Access Control and Permissions: Containers have their own access control mechanisms, allowing administrators to define access policies and permissions for different users or groups. Access controls can be set at the container level, granting read, write, or delete permissions to specific users or accounts. This enables fine-grained access control and helps enforce security and privacy requirements.
+
+- Metadata and Policies: Containers in Swift support metadata, which are key-value pairs associated with the container. Metadata can be used to provide additional information about the container, such as the purpose, creation date, owner, or any custom attributes. Policies can be applied at the container level to enforce specific behaviors or rules, such as data retention policies or replication settings.
+
+- Scalability and Performance: Containers play a role in achieving scalability and performance in Swift. Containers act as a unit of storage and allow for efficient distribution of objects across multiple storage nodes in the Swift cluster. Objects within a container can be distributed and replicated across different drives and servers, ensuring redundancy and high availability.
+
+- Object Listing and Management: Containers provide the capability to list, search, and manage the objects stored within them. Users can query a container to retrieve a list of objects, filter based on metadata, or perform bulk operations on multiple objects within the container. Swift APIs and client libraries provide various methods to interact with containers, allowing users to create, delete, update, or retrieve information about containers and their contents.
+
+
 ### The Rings 
 
 ![What is Ring](https://www.itweet.cn/screenshots/openstack-swift.png)
